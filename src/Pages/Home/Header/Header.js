@@ -1,13 +1,56 @@
 import React from 'react';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
+import logo from '../../../images/logo2.png'
+import { HashLink } from 'react-router-hash-link';
+
+
+import './Header.css'
 
 const Header = () => {
+    const { user, logOut } = useAuth()
     return (
-        <div>
-            <h2>this is header</h2>
-            
+        <>
+            <Navbar bg="light" variant="light" sticky="top" collapseOnSelect expand="lg">
+                <Container>
+                    <Navbar.Brand className='logo border rounded-pill' href="/home#home">
+                        <img  src={logo} alt="" />
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
 
-        </div>
+                    <Navbar.Collapse className="justify-content-start">
+                        <Nav.Link as={HashLink} to="/home#home">Home</Nav.Link>
+                        <Nav.Link as={HashLink} to="/home#services">Services</Nav.Link>
+                        <Nav.Link as={HashLink} to="#pricing">Pricing</Nav.Link>
+
+                    </Navbar.Collapse>
+
+                    <Navbar.Collapse className="justify-content-end">
+                        <Navbar.Text>
+                            {user.email &&
+                                <h6>Hello<a href="#login"> {user?.displayName}</a>
+                                </h6>
+                            }
+                        </Navbar.Text>
+                        <Navbar.Text>
+                            <img className='w-50 rounded rounded-pill' src={user.photoURL} alt="" />
+                        </Navbar.Text>
+
+                        {
+                            user.email ?
+                                <Button variant='primary' className='m-3' onClick={logOut}>Sign Out</Button>
+                                :
+                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        }
+
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+
+        </>
     );
 };
 
 export default Header;
+

@@ -1,0 +1,9 @@
+.text-style{
+    line-height: 18px;
+}
+.footer-text{
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    background-color: #20202098;
+}
