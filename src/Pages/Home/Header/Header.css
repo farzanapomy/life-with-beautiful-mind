@@ -1,4 +1,21 @@
 .logo img{
-    width: 100px;
+    width: 200px;
     height: 80px;
+}
+.nav-text {
+    color: black;
+    font-weight: 500;
+}
+.nav-text:hover {
+    border: 1px solid gray;
+    background-color: rgba(0, 0, 0, 0.74);
+    border-radius: 5px;
+    color: white;
+}
+.nav-button{
+    padding: 0px 15px;
+    border: 1px solid gray;
+    background-color: #202020;
+    color: white;
+    border-radius: 10px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-solid-svg-icons'
 
-import logo from '../../../images/logo.jpg'
+import logo from '../../../images/logo.png'
 import './Footer.css'
 
 
@@ -26,11 +26,11 @@ const Footer = () => {
                         <div className="p-3 border  text-style border-0">
                             <h6>Contact Details</h6>
                             <div className='d-flex justify-content-center align-items-center'>
-                                <p><i class="fab fa-facebook"></i></p>
+                                <p><i className="fab fa-facebook"></i></p>
                                 <p>1870 Alpaca Way Irvine, Chittagong 92614.Bangladesh</p>
                             </div>
                             <div className='d-flex justify-content-center align-items-center'>
-                                <p><i class="fas fa-phone"></i></p>
+                                <p><i className="fas fa-phone"></i></p>
                                 <p>Phone: +1 921 124 9220,Mail: info@psychare.com</p>
 
                             </div>

@@ -6,15 +6,15 @@ const Service = ({ service }) => {
 
     return (
         <div >
-            <div class="card mb-3 container" >
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src={img} class="img-fluid rounded-start" alt="..." />
+            <div className="card mb-3 container" >
+                <div className="row g-0">
+                    <div className="col-md-4">
+                        <img src={img} className="img-fluid rounded-start" alt="..." />
                     </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h2 class="card-title ">{title}</h2>
-                            <p class="card-text">{description}</p>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <h2 className="card-title ">{title}</h2>
+                            <p className="card-text">{description}</p>
                             <button className='btn btn-warning'>
                                 <NavLink
                                     to={`/services/${id}`}

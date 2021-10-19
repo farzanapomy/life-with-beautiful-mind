@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
-import logo from '../../../images/logo2.png'
+import logo from '../../../images/nav.png'
 import { HashLink } from 'react-router-hash-link';
 
 
@@ -14,15 +14,15 @@ const Header = () => {
         <>
             <Navbar bg="light" variant="light" sticky="top" collapseOnSelect expand="lg">
                 <Container>
-                    <Navbar.Brand className='logo border rounded-pill' href="/home#home">
-                        <img  src={logo} alt="" />
+                    <Navbar.Brand className='logo border-0 ' href="/home#home">
+                        <img src={logo} alt="" />
                     </Navbar.Brand>
                     <Navbar.Toggle />
 
-                    <Navbar.Collapse className="justify-content-start">
-                        <Nav.Link as={HashLink} to="/home#home">Home</Nav.Link>
-                        <Nav.Link as={HashLink} to="/home#services">Services</Nav.Link>
-                        <Nav.Link as={HashLink} to="#pricing">Pricing</Nav.Link>
+                    <Navbar.Collapse className="justify-content-start ">
+                        <Nav.Link className='nav-text' as={HashLink} to="/home#home">Home</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/home#services">Services</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/home#blogs">Blogs</Nav.Link>
 
                     </Navbar.Collapse>
 
@@ -36,14 +36,14 @@ const Header = () => {
                         <Navbar.Text>
                             <img className='w-50 rounded rounded-pill' src={user.photoURL} alt="" />
                         </Navbar.Text>
-
-                        {
-                            user.email ?
-                                <Button variant='primary' className='m-3' onClick={logOut}>Sign Out</Button>
-                                :
-                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                        }
-
+                        <Navbar.Collapse className='me-auto'>
+                            {
+                                user.email ?
+                                    <Button variant='primary' className='m-3' onClick={logOut}>Sign Out</Button>
+                                    :
+                                    <button className='nav-button nav-text'><Nav.Link as={Link} to="/login">Login</Nav.Link></button>
+                            }
+                        </Navbar.Collapse>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

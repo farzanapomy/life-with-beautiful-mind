@@ -12,8 +12,10 @@ const useFirebase = () => {
     const [isLoging, setIsLoging] = useState(false)
     const [isLoading, setIsloading] = useState(true)
 
-
     const auth = getAuth()
+
+// google sign in
+
     const signinWithGoogle = (e) => {
         e.preventDefault()
         setIsloading(true);
@@ -26,7 +28,6 @@ const useFirebase = () => {
                 setError(error.massage)
             })
             .finally(() => setIsloading(false))
-
     }
 
     const logOut = () => {
@@ -34,11 +35,12 @@ const useFirebase = () => {
         signOut(auth)
             .then(() => { })
             .finally(() => setIsloading(false))
-
     }
 
-    const handleCheckBox = e => {
-        setIsLoging(e.target.checked)
+//     handle email signin
+
+    const handleEmailSignin=(e)=>{
+        console.log(e.target.value)
     }
 
 
@@ -67,6 +69,7 @@ const useFirebase = () => {
         isLoading,
         isLoging,
         signinWithGoogle,
+        handleEmailSignin,
 
         logOut
     }

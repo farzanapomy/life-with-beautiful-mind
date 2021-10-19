@@ -9,23 +9,26 @@ const SingleServices = () => {
 
     useEffect(() => {
         fetch('/services.json')
-        .then(res=>res.json())
-        .then(data=>setSingleServices(data)) 
+            .then(res => res.json())
+            .then(data => setSingleServices(data))
     }
-    , [])
-    const perService = singleServices.filter(singleService => singleService.id === id)
-            console.log(perService)
-   
+        , []);
+
+    useEffect(() => {
+        const findService = singleServices?.filter((singleService) => singleService?.id === id);
+        const perService = findService[0]
+        console.log(perService)
+    }, [id])
 
 
 
-return (
-    <div>
 
-    <h4>{perService[0]?.title}</h4>
-        <h2>{id}</h2>
-    </div>
-);
+    return (
+        <div>
+            {/* <h3>{perService.title}</h3> */}
+            <h2>{id}</h2>
+        </div>
+    );
 };
 
 export default SingleServices;
