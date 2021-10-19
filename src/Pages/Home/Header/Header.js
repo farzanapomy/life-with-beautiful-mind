@@ -36,12 +36,12 @@ const Header = () => {
                         <Navbar.Text>
                             <img className='w-50 rounded rounded-pill' src={user.photoURL} alt="" />
                         </Navbar.Text>
-                        <Navbar.Collapse className='me-auto'>
+                        <Navbar.Collapse className='ms-end'>
                             {
                                 user.email ?
                                     <Button variant='primary' className='m-3' onClick={logOut}>Sign Out</Button>
                                     :
-                                    <button className='nav-button nav-text'><Nav.Link as={Link} to="/login">Login</Nav.Link></button>
+                                    <button className='nav-button nav-text'><Nav.Link as={Link} to="/login">Login </Nav.Link></button>
                             }
                         </Navbar.Collapse>
                     </Navbar.Collapse>

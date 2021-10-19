@@ -4,7 +4,7 @@ import useAuth from '../../../Hooks/useAuth';
 import login from '../../../images/login.jpg'
 import './Login.css'
 const Login = () => {
-    const { signinWithGoogle, handleCheckBox, isLoging,handleEmailSignin } = useAuth()
+    const { signinWithGoogle, handleCheckBox, isLoging,handleEmailSignin,signinWithGithub ,handlePasswordChnage} = useAuth()
     return (
         <>
             <h2>{
@@ -13,14 +13,14 @@ const Login = () => {
 
             }</h2>
 
-            <div class="container overflow-hidden">
-                <div class="row g-5">
-                    <div class="col">
-                        <div class="p-3 border bg-light input-field">
+            <div className="container overflow-hidden">
+                <div className="row g-5">
+                    <div className="col">
+                        <div className="p-3 border bg-light input-field">
                             <h2>Please Login</h2>
-                            <input type="text" placeholder='Enter Email' onChange={handleEmailSignin}/>
+                            <input required type="text" placeholder='Enter Email' onChange={handleEmailSignin}/>
                             <br />
-                            <input type="password" placeholder='Enter Password' />
+                            <input required type="password" placeholder='Enter Password'  onChange={handlePasswordChnage}/>
                             <br />
                             <button className='btn btn-primary '>LogIn</button>
                             <br />
@@ -28,7 +28,7 @@ const Login = () => {
                             <div className='signin-button'>
                                 <button onClick={signinWithGoogle}><i className="fab fa-google "></i>  Sign in with Google</button>
                               
-                                <button><i className="fab fa-github-square"></i>  Sign in with Github</button>
+                                <button onClick={signinWithGithub}><i className="fab fa-github-square"></i>  Sign in with Github</button>
                             </div>
                             <div>
                                 <p>Are you new then please Login</p>

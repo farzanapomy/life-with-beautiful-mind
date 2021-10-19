@@ -9,6 +9,7 @@ import Home from './Pages/Home/Home/Home';
 import Services from './Pages/Home/Services/Services';
 import Login from './Pages/Login/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import Register from './Pages/Login/Register/Register';
 import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
@@ -29,13 +30,16 @@ function App() {
               <Services></Services>
             </Route>
             <PrivateRoute exact path='/services/:id'>
-             <SingleServices></SingleServices>
+              <SingleServices></SingleServices>
             </PrivateRoute>
             <Route path='/blogs'>
-           <Blogs></Blogs>
+              <Blogs></Blogs>
             </Route>
             <Route path='/login'>
               <Login></Login>
+            </Route>
+            <Route path='/register'>
+              <Register></Register>
             </Route>
             <Route exact path='*'>
               <NotFound></NotFound>
