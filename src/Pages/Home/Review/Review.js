@@ -6,7 +6,7 @@ const Review = ({ review }) => {
     return (
         <>
 
-            <div className="col">
+            <div className="col my-5">
                 <div className="card h-100 review-img ">
                     <img src={img} className="card-img-top" alt="..." />
                     <div className="card-body">

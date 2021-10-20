@@ -14,8 +14,8 @@ const Blog = ({ blog }) => {
                         <p className="card-text">{description}</p>
                     </div>
                     <Card.Footer>
-                        <small classNameName="text-muted">
-                            <button classNameName='btn btn-primary'>Read {title.toLowerCase()} blog</button>
+                        <small className="text-muted">
+                            <button className='btn btn-primary'>Read {title.toLowerCase()} blog</button>
                         </small>
                     </Card.Footer>
                 </div>

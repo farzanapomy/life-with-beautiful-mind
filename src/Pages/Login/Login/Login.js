@@ -5,23 +5,25 @@ import './Login.css'
 const Login = () => {
     const { signinWithGoogle, handleEmailSignin, signinWithGithub, handlePasswordChange, handleLogin, handleResetPass } = useAuth()
 
-    // const location = useLocation()
-    // const history = useHistory()
-    // const redirect_uri = location?.state?.from || '/services'
+    const location = useLocation()
+    const history = useHistory()
+    const redirect_uri = location?.state?.from || '/services/1'
 
-    // const handleGoogleButton = () => {
-    //     signinWithGoogle()
-    //         .then(result => {
-    //             history.push(redirect_uri) 
-    //         })
-    // }
+    console.log('from', location?.state?.from)
+
+    const handleGoogleButton = () => {
+        signinWithGoogle()
+            .then(result => {
+                history.push(redirect_uri)
+            })
+    }
 
 
 
 
     return (
         <>
-            <div className="container overflow-hidden">
+            <div className="container overflow-hidden my-5">
                 <div className="row g-5">
                     <div className="col">
                         <div className="p-3 border bg-light input-field">
@@ -35,11 +37,12 @@ const Login = () => {
                                 <br />
                                 <br />
                                 <div className='signin-button'>
-                                    <button onClick={signinWithGoogle}><i className="fab fa-google "></i>  Sign in with Google</button>
+                                    <button onClick={handleGoogleButton}><i className="fab fa-google "></i>  Sign in with Google</button>
 
                                     <button onClick={signinWithGithub}><i className="fab fa-github-square"></i>  Sign in with Github</button>
+                                    <button onClick={handleResetPass}>Reset PassWord</button>
                                 </div>
-                                <button onClick={handleResetPass}>Reset PassWord</button>
+
                                 <div>
                                     <Link to='/register'> <p>Are you new then please Register</p></Link>
                                     <Link to='/login'> <p>Already have an account?</p></Link>
