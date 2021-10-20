@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+
 initializeAuthentication();
 
 
@@ -9,7 +10,6 @@ initializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
-    const [isLoging, setIsLoging] = useState(false)
     const [isLoading, setIsloading] = useState(true)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,16 +18,16 @@ const useFirebase = () => {
 
     // google sign in
 
-    const signinWithGoogle = (e) => {
-        e.preventDefault()
+
+
+
+
+    const signinWithGoogle = () => {
         setIsloading(true);
         const googleProvider = new GoogleAuthProvider()
         signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-            })
             .catch(error => {
-                setError(error.massage)
+                setError(error.message)
             })
             .finally(() => setIsloading(false))
     }
@@ -44,7 +44,7 @@ const useFirebase = () => {
     const signinWithGithub = (e) => {
         e.preventDefault()
         setIsloading(true);
-        const gitHubProvider = new GithubAuthProvider;
+        const gitHubProvider = new GithubAuthProvider();
         signInWithPopup(auth, gitHubProvider)
             .then(result => {
                 setUser(result.user);
@@ -66,8 +66,8 @@ const useFirebase = () => {
     }
 
 
-    const handlePasswordChnage = (e) => {
-        if (password.length < 6) {
+    const handlePasswordChange = (e) => {
+        if (e.target.value.length < 6) {
             setError('password should be greater than 6 characters')
             return;
         }
@@ -75,7 +75,7 @@ const useFirebase = () => {
             setPassword(e.target.value)
         }
 
-        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+        if (!/(?=.*[A-Z].*[a-z])/.test(password)) {
             setError('Must be use capital Latter')
             return;
         }
@@ -86,12 +86,12 @@ const useFirebase = () => {
 
     }
 
-    const handleRegsiter = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault()
-        console.log('clicked')
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                setUser(result.user);
+                const user = result.user;
+                setUser(user)
             })
             .catch(error => {
                 setError(error.massage)
@@ -100,17 +100,30 @@ const useFirebase = () => {
     }
 
 
+    const processLogin = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                setError('')
+                setUser()
+            })
+            .catch(error => {
+                setError(error.massage)
+            })
+    }
+ 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, user => {
+        const unSubscribed = onAuthStateChanged(auth, user => {
             if (user) {
                 setUser(user)
             }
             else {
-                setUser({});
+                setUser({})
             }
             setIsloading(false)
-        })
-        return () => unSubscribe;
+        });
+        return () => unSubscribed;
     }, [])
 
 
@@ -121,14 +134,13 @@ const useFirebase = () => {
 
     return {
         user,
-        isLoading,
-        isLoging,
         signinWithGoogle,
+        isLoading,
         handleEmailSignin,
         signinWithGithub,
-        handlePasswordChnage,
-        handleRegsiter,
-
+        handlePasswordChange,
+        handleRegister,
+        processLogin,
         logOut
     }
 };

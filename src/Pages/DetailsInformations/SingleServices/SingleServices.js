@@ -2,6 +2,7 @@ import Button from '@restart/ui/esm/Button';
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import './SingleServices.css'
 
 const SingleServices = () => {
@@ -13,16 +14,13 @@ const SingleServices = () => {
     useEffect(() => {
         fetch('/services.json')
             .then(res => res.json())
-            .then(data => setSingleServices(data))
+            .then(data => setSingleServices(data));
     }
-        , []);
+        ,[]);
 
 
 
     const findService = singleServices?.filter((singleService) => (singleService.id) == (id));
-    // const perService = findService[0]
-    // console.log(typeof(id))
-    console.log(findService)
 
 
 
@@ -36,7 +34,6 @@ const SingleServices = () => {
                     <h1 className='title'>{findService[0]?.title}</h1>
                 </Card.Text>
                 <Card.Body className='text-start mt-3 mb-5 p-5'>
-
                     <Card.Text>
                         {findService[0]?.help}
                     </Card.Text>
@@ -52,7 +49,9 @@ const SingleServices = () => {
                         <h4>Package Charge :  $ {findService[0]?.charge}
                         </h4>
                     </Card.Text>
-                    <Button variant="primary">Go somewhere</Button>
+                    <Link to='/services'>
+                        <Button className='btn btn-warning'>Go Back</Button>
+                    </Link>
                 </Card.Body>
             </Card>
 

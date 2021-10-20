@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import notFound from '../../images/notFound.jpg'
 
 const NotFound = () => {
@@ -9,16 +9,11 @@ const NotFound = () => {
             <img src={notFound} alt="" />
             <div>
                 <button className='border border-rounded bg-primary'>
-                    <NavLink
-                        to="/home"
-                        activeStyle={{
-                            fontWeight: "bold",
-                            color: "black",
-                            border: 'info'
-                        }}
-                    >
-                        Go To home
-                    </NavLink>
+
+                    <Link to='/home'>
+                        <button className='btn btn-warning pe-3'>Go Home</button>
+                    </Link>
+
                 </button>
             </div>
         </div>

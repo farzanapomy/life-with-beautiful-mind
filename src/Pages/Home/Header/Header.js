@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import logo from '../../../images/nav.png'
 import { HashLink } from 'react-router-hash-link';
-
-
 import './Header.css'
+
 
 const Header = () => {
     const { user, logOut } = useAuth()
@@ -19,10 +18,12 @@ const Header = () => {
                     </Navbar.Brand>
                     <Navbar.Toggle />
 
-                    <Navbar.Collapse className="justify-content-start ">
+                    <Navbar.Collapse className="justify-content-end ">
                         <Nav.Link className='nav-text' as={HashLink} to="/home#home">Home</Nav.Link>
                         <Nav.Link className='nav-text' as={HashLink} to="/home#services">Services</Nav.Link>
                         <Nav.Link className='nav-text' as={HashLink} to="/home#blogs">Blogs</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/home#reviews">Reviews</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/about">About US</Nav.Link>
 
                     </Navbar.Collapse>
 
@@ -36,7 +37,7 @@ const Header = () => {
                         <Navbar.Text>
                             <img className='w-50 rounded rounded-pill' src={user.photoURL} alt="" />
                         </Navbar.Text>
-                        <Navbar.Collapse className='ms-end'>
+                        <Navbar.Collapse className='me-end'>
                             {
                                 user.email ?
                                     <Button variant='primary' className='m-3' onClick={logOut}>Sign Out</Button>
