@@ -30,7 +30,7 @@ const Header = () => {
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             {user.email &&
-                                <h6>Hello<a href="#login"> {user?.displayName}</a>
+                                <h6><a href="#login"> {user?.email}</a>
                                 </h6>
                             }
                         </Navbar.Text>

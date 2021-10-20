@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, } from 'firebase/auth'
 
 initializeAuthentication();
 
@@ -13,22 +13,20 @@ const useFirebase = () => {
     const [isLoading, setIsloading] = useState(true)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name,setName]=useState('')
 
     const auth = getAuth()
 
+
     // google sign in
-
-
-
-
 
     const signinWithGoogle = () => {
         setIsloading(true);
         const googleProvider = new GoogleAuthProvider()
         signInWithPopup(auth, googleProvider)
-        .then(result=>{
-            setUser(result.user)
-        })
+            .then(result => {
+                setUser(result.user)
+            })
             .catch(error => {
                 setError(error.message)
             })
@@ -68,54 +66,69 @@ const useFirebase = () => {
         setEmail(e.target.value)
     }
 
-
     const handlePasswordChange = (e) => {
-        if (e.target.value.length < 6) {
-            setError('password should be greater than 6 characters')
-            return;
-        }
-        else {
-            setPassword(e.target.value)
-        }
-
-        if (!/(?=.*[A-Z].*[a-z])/.test(password)) {
-            setError('Must be use capital Latter')
-            return;
-        }
-
-        else {
-            setPassword(e.target.value)
-        }
-
+        setPassword(e.target.value)
     }
 
     const handleRegister = (e) => {
         e.preventDefault()
+        setIsloading(true)
+        if (password.length < 6) {
+            setError('Password should be grater than 6 character')
+            return;
+        }
+
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
-                const user = result.user;
-                setUser(user)
+                const user = result.user
+                console.log(user)
+                setError('')
+                emailVerify()
             })
             .catch(error => {
                 setError(error.massage)
             })
             .finally(() => setIsloading(false))
+
     }
 
 
-    const processLogin = (email, password) => {
+    const handleLogin = (e) => {
+        e.preventDefault()
+        setIsloading(true)
         signInWithEmailAndPassword(auth, email, password)
             .then(result => {
-                const user = result.user
-                console.log(user)
+                const user = result.user;
+                console.log(user);
                 setError('')
-                setUser()
             })
             .catch(error => {
                 setError(error.massage)
             })
+            .finally(() => setIsloading(false))
+
     }
- 
+
+    const emailVerify = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(result => {
+                console.log(result)
+            })
+    }
+
+    const handleResetPass = () => {
+        sendPasswordResetEmail(auth, email)
+            .then(result => {
+            })
+    }
+
+    const handleName=(e)=>{
+        setName(e.target.value)
+    }
+
+
+
+
     useEffect(() => {
         const unSubscribed = onAuthStateChanged(auth, user => {
             if (user) {
@@ -137,13 +150,16 @@ const useFirebase = () => {
 
     return {
         user,
+        error,
+        handleLogin,
+        handleName,
+        handleRegister,
+        handleResetPass,
         signinWithGoogle,
         isLoading,
         handleEmailSignin,
         signinWithGithub,
         handlePasswordChange,
-        handleRegister,
-        processLogin,
         logOut
     }
 };
