@@ -3,14 +3,14 @@
     height: 80px;
 }
 .nav-text {
-    color: black;
+    color: white;
     font-weight: 500;
 }
 .nav-text:hover {
     border: 1px solid gray;
     background-color: rgba(0, 0, 0, 0.74);
     border-radius: 5px;
-    color: white;
+    color: rgba(60, 131, 172, 0.829);
 }
 .nav-button{
     padding: 0px 15px;

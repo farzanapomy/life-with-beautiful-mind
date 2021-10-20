@@ -9,7 +9,6 @@ const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={allContext}>
             {children}
-
         </AuthContext.Provider>
     );
 };

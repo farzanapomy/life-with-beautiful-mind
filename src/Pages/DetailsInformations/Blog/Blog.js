@@ -4,8 +4,7 @@ import { Card } from 'react-bootstrap';
 const Blog = ({ blog }) => {
     const { title, description, img } = blog;
     return (
-        <div>
-
+        <div className='blog-body'>
             <div className="col">
                 <div className="card h-100  ">
                     <img src={img} className="card-img-top" alt="..." />
