@@ -6,15 +6,17 @@ const Review = ({ review }) => {
     return (
         <>
 
-            <div class="col my-5">
-                <div class="card card-img">
-                    <img src={img} className="" alt="..." />
-                    <div class="card-body">
-                        <h5 class="card-title">{name}</h5>
-                        <p class="card-text">{text}</p>
+            <div className="col">
+                <div className="card h-100 review-img ">
+                    <img src={img} className="card-img-top" alt="..." />
+                    <div className="card-body">
+                        <h5 className="card-title">{name}</h5>
+                        <p className="card-text">{text}</p>
                     </div>
+                    
                 </div>
             </div>
+
 
 
         </ >

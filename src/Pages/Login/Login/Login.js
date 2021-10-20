@@ -5,20 +5,6 @@ import './Login.css'
 const Login = () => {
     const { signinWithGoogle, handleEmailSignin, signinWithGithub, handlePasswordChange, processLogin } = useAuth()
 
-    const location = useLocation();
-    const history = useHistory();
-    const redirect_uri = location.state?.from || "/services";
-    console.log('from', location.state?.from)
-
-
-    const handleGoogleLogin = () => {
-        signinWithGoogle()
-            .then(result => {
-                history.push(redirect_uri);
-            })
-    }
-
-
 
     return (
         <>
@@ -35,7 +21,7 @@ const Login = () => {
                             <br />
                             <br />
                             <div className='signin-button'>
-                                <button onClick={handleGoogleLogin}><i className="fab fa-google "></i>  Sign in with Google</button>
+                                <button onClick={signinWithGoogle}><i className="fab fa-google "></i>  Sign in with Google</button>
 
                                 <button onClick={signinWithGithub}><i className="fab fa-github-square"></i>  Sign in with Github</button>
                             </div>

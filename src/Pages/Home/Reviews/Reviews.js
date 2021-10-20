@@ -11,12 +11,12 @@ const Reviews = () => {
             .then(data => setReviews(data))
     }, [])
     return (
-        <div id='reviews' >
-            <div id='review' className='container'>
+        <div id='reviews' className='container card-section' >
+            <div id='review'>
                 <h1 className='my-5'>Respected Reviews</h1>
                 <h5 className='mb-5'>Mental Health & Wellness
                     Resources The following links are to other websites that may be of interest. However, once you have used these links to leave our site, you should note that UR Medicine and our Department of Psychiatry</h5>
-                <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div className='  row row-cols-1 row-cols-md-3 g-4  >'>
 
                     {
                         reviews.map(review => <Review
