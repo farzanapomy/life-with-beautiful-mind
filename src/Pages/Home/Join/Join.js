@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Join = () => {
     return (
         <div className='container text-start my-5'>
+            <h2>Fill Up this form to join with us.</h2>
             <form class="row g-3">
                 <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">You First Name</label>

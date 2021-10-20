@@ -1,12 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Service.css'
 
 const Service = ({ service }) => {
     const { img, title, description, id } = service
 
     return (
         <div >
-            <div className="card mb-3 container" >
+            <div className="card mb-3 container card-image" >
                 <div className="row g-0">
                     <div className="col-md-4">
                         <img src={img} className="img-fluid rounded " alt="..." />

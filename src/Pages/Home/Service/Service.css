@@ -1,0 +1,10 @@
+.card-image img:hover {
+   box-shadow: 10px 5px 25px rgba(137, 43, 226, 0.568);
+   transition: 2s ease-out;
+
+}
+
+.card-image:hover{
+    background-color: rgba(137, 43, 226, 0.205);
+    transition: 2s 2s ease-in-out;
+}

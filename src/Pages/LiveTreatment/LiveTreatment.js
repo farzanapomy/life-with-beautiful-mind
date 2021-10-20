@@ -3,6 +3,7 @@ import React from 'react';
 const LiveTreatment = () => {
     return (
         <div className='container my-5 p-5 w-75'>
+            <h2 className='fs-1 fw-bold m-3 p-4 bg-dark text-white'>Please fill up all field to get proper treatment</h2>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" />
