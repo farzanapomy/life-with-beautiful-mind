@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, GithubAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail,updateProfile } from 'firebase/auth'
 
 initializeAuthentication();
 
@@ -13,7 +13,7 @@ const useFirebase = () => {
     const [isLoading, setIsloading] = useState(true)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name,setName]=useState('')
+    const [name, setName] = useState('')
 
     const auth = getAuth()
 
@@ -84,6 +84,7 @@ const useFirebase = () => {
                 console.log(user)
                 setError('')
                 emailVerify()
+                setUserName()
             })
             .catch(error => {
                 setError(error.massage)
@@ -122,10 +123,14 @@ const useFirebase = () => {
             })
     }
 
-    const handleName=(e)=>{
+    const handleName = (e) => {
         setName(e.target.value)
     }
 
+    const setUserName=()=>{
+        updateProfile(auth.currentUser,{displayName:name})
+        .then(result=>{})
+    }
 
 
 
