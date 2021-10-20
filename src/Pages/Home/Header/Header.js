@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
-import logo from '../../../images/nav.png'
+import logo from '../../../images/logo (2).png'
 import { HashLink } from 'react-router-hash-link';
 import './Header.css'
 
@@ -23,6 +23,8 @@ const Header = () => {
                         <Nav.Link className='nav-text' as={HashLink} to="/home#services">Services</Nav.Link>
                         <Nav.Link className='nav-text' as={HashLink} to="/home#blogs">Blogs</Nav.Link>
                         <Nav.Link className='nav-text' as={HashLink} to="/home#reviews">Reviews</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/livetreatment">Live Treatment</Nav.Link>
+                        <Nav.Link className='nav-text' as={HashLink} to="/join">Join With Us</Nav.Link>
                         <Nav.Link className='nav-text' as={HashLink} to="/about">About US</Nav.Link>
 
                     </Navbar.Collapse>

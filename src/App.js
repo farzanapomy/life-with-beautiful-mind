@@ -7,8 +7,11 @@ import SingleServices from './Pages/DetailsInformations/SingleServices/SingleSer
 import Footer from './Pages/Home/Footer/Footer';
 import Header from './Pages/Home/Header/Header';
 import Home from './Pages/Home/Home/Home';
+import Join from './Pages/Home/Join/Join';
+import Successful from './Pages/Home/Join/Successful';
 import Reviews from './Pages/Home/Reviews/Reviews';
 import Services from './Pages/Home/Services/Services';
+import LiveTreatment from './Pages/LiveTreatment/LiveTreatment';
 import Login from './Pages/Login/Login/Login';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import Register from './Pages/Login/Register/Register';
@@ -40,9 +43,17 @@ function App() {
             <Route path='/reviews'>
               <Reviews></Reviews>
             </Route>
-           
+            <PrivateRoute path='/livetreatment'>
+              <LiveTreatment></LiveTreatment>
+            </PrivateRoute>
+            <PrivateRoute path='/join'>
+              <Join></Join>
+            </PrivateRoute>
             <Route path='/about'>
               <About></About>
+            </Route>
+            <Route path='/successful'>
+              <Successful></Successful>
             </Route>
             <Route path='/login'>
               <Login></Login>

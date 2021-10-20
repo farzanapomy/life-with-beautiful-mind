@@ -21,10 +21,12 @@ const Service = ({ service }) => {
                                     activeStyle={{
                                         fontWeight: "bold",
                                         color: "red",
-                                        textDecoration:'none'
+                                        textDecoration: 'none'
                                     }}
                                 >
-                                    Go For Details
+                                    <small className="text-muted">
+                                        <button className='btn btn-primary'>Read More About {title.toLowerCase()} </button>
+                                    </small>
                                 </NavLink>
                             </button>
                         </div>
