@@ -1,23 +1,22 @@
-// import { Link, useLocation, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import login from '../../../images/login.jpg'
 import './Login.css'
 const Login = () => {
     const { signinWithGoogle, handleEmailSignin, signinWithGithub, handlePasswordChange, handleLogin, handleResetPass } = useAuth()
 
-    // const location = useLocation()
-    // const history = useHistory()
-    // const redirect_uri = location?.state?.from || '/services/1'
+    const location = useLocation()
+    const history = useHistory()
+    const redirect_uri = location?.state?.from || '/services'
 
-    // console.log('from', location?.state?.from)
+    console.log('from', location?.state?.from)
 
-    // const handleGoogleButton = () => {
-    //     signinWithGoogle()
-    //         .then(result => {
-    //             history.push(redirect_uri)
-    //         })
-    // }
+    const handleGoogleButton = () => {
+        signinWithGoogle()
+            .then(result => {
+                history.push(redirect_uri)
+            })
+    }
 
 
 
@@ -38,7 +37,7 @@ const Login = () => {
                                 <br />
                                 <br />
                                 <div className='signin-button'>
-                                    <button onClick={signinWithGoogle}><i className="fab fa-google "></i>  Sign in with Google</button>
+                                    <button onClick={handleGoogleButton}><i className="fab fa-google "></i>  Sign in with Google</button>
 
                                     <button onClick={signinWithGithub}><i className="fab fa-github-square"></i>  Sign in with Github</button>
                                     <button onClick={handleResetPass}>Reset PassWord</button>

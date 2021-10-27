@@ -23,10 +23,10 @@ const useFirebase = () => {
     const signinWithGoogle = () => {
         setIsloading(true);
         const googleProvider = new GoogleAuthProvider()
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user)
-            })
+      return  signInWithPopup(auth, googleProvider)
+            // .then(result => {
+            //     setUser(result.user)
+            // })
             .catch(error => {
                 setError(error.message)
             })
@@ -46,7 +46,7 @@ const useFirebase = () => {
         e.preventDefault()
         setIsloading(true);
         const gitHubProvider = new GithubAuthProvider();
-        signInWithPopup(auth, gitHubProvider)
+         signInWithPopup(auth, gitHubProvider)
             .then(result => {
                 setUser(result.user);
             })
