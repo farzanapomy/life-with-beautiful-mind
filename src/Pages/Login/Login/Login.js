@@ -11,11 +11,12 @@ const Login = () => {
 
     console.log('from', location?.state?.from)
 
-    const handleGoogleButton = () => {
+    const handleGoogleButton = (e) => {
         signinWithGoogle()
             .then(result => {
                 history.push(redirect_uri)
             })
+            // e.target.reset()
     }
 
 

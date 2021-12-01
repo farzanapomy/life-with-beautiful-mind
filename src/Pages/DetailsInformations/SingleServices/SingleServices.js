@@ -16,7 +16,7 @@ const SingleServices = () => {
             .then(res => res.json())
             .then(data => setSingleServices(data));
     }
-        ,[]);
+        , []);
 
 
 
@@ -27,7 +27,7 @@ const SingleServices = () => {
 
 
     return (
-        <div >
+        <div className='container'>
             <Card className='container my-5'>
                 <Card.Img variant="top" src={findService[0]?.img} />
                 <Card.Text>

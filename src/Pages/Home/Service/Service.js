@@ -6,7 +6,7 @@ const Service = ({ service }) => {
     const { img, title, description, id } = service
 
     return (
-        <div >
+        <div data-spy="scroll" data-target=".navbar-nav" data-offset="110">
             <div className="card mb-3 container card-image" >
                 <div className="row g-0">
                     <div className="col-md-4">

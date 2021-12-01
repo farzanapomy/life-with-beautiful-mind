@@ -7,10 +7,11 @@ import './Banner.css'
 const Banner = () => {
     return (
         <>
-            <Carousel>
+            <Carousel className='container'>
                 <Carousel.Item interval={1500}>
                     <img
-                        className="d-block w-100"
+                        style={{ height: '25%' }}
+                        className="d-block w-100 img-fluid"
                         src={banner1}
                         alt="First slide"
                     />
@@ -21,7 +22,8 @@ const Banner = () => {
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
                     <img
-                        className="d-block w-100"
+                        style={{ height: '25%' }}
+                        className="d-block w-100 img-fluid"
                         src={banner2}
                         alt="Second slide"
                     />
@@ -32,7 +34,8 @@ const Banner = () => {
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
                     <img
-                        className="d-block w-100"
+                        style={{ height: '25%' }}
+                        className="d-block w-100 img-fluid"
                         src={banner3}
                         alt="Third slide"
                     />
